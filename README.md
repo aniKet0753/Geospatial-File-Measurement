@@ -46,6 +46,72 @@ It extracts geospatial features, preserves geometry and properties, handles coor
 - **Docker**
 
 ---
+Architecture:
+
+The application is divided into three main layers:
+API Layer
+app/api/routes.py
+Handles:
+- File uploads
+- File information requests
+- Measurement requests
+- HTTP validation and error responses
+Service Layer
+app/services/measurement.py
+Responsible for:
+- Reading KML files
+- Extracting Shapefile ZIP archives
+- Loading geospatial data with GeoPandas
+- Extracting feature geometry and properties
+- CRS handling
+- Measurement calculations
+Database Layer
+app/db.py
+Uses SQLite to persist:
+- Uploaded file information
+- Processing status
+- CRS information
+- Extracted feature information
+- Measurement results
+Setup
+Prerequisites
+Make sure you have:
+- Python 3.12+
+- pip
+- Git
+1. Clone the repository
+git clone https://github.com/aniKet0753/Geospatial-File-Measurement.git
+cd Geospatial-File-Measurement
+
+3. Install dependencies
+pip install -r requirements.txt
+
+4. Run the application
+uvicorn app.main:app --reload
+
+The API will be available at:
+http://127.0.0.1:8000
+
+## Features
+
+- KML file processing
+- Shapefile ZIP processing
+- Polygon area calculation
+- Polygon perimeter calculation
+- LineString length calculation
+- Point geometry handling
+- Feature geometry and properties extraction
+- CRS detection and handling
+- Geographic CRS transformation before measurement
+- File validation
+- ZIP path-traversal protection
+- Graceful handling of unsupported geometries
+- SQLite persistence
+- RESTful API
+- Automated tests
+- Docker support
+- Interactive Swagger API documentation
+
 
 ## Project Structure
 
@@ -80,3 +146,4 @@ Geospatial File Measurement/
 ├── pytest.ini
 ├── README.md
 └── requirements.txt
+
