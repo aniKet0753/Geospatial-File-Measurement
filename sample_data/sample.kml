@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document>
+        <name>Sample Geospatial Data</name>
+
+        <Placemark>
+            <name>Sample Polygon</name>
+            <ExtendedData>
+                <Data name="land_type">
+                    <value>Residential</value>
+                </Data>
+                <Data name="owner">
+                    <value>Test User</value>
+                </Data>
+            </ExtendedData>
+
+            <Polygon>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>
+                            88.3500,22.5700,0
+                            88.3600,22.5700,0
+                            88.3600,22.5800,0
+                            88.3500,22.5800,0
+                            88.3500,22.5700,0
+                        </coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+        </Placemark>
+
+        <Placemark>
+            <name>Sample Road</name>
+
+            <LineString>
+                <coordinates>
+                    88.3500,22.5700,0
+                    88.3550,22.5750,0
+                    88.3600,22.5800,0
+                </coordinates>
+            </LineString>
+        </Placemark>
+
+        <Placemark>
+            <name>Sample Point</name>
+
+            <Point>
+                <coordinates>
+                    88.3550,22.5750,0
+                </coordinates>
+            </Point>
+        </Placemark>
+
+    </Document>
+</kml>
