@@ -1,19 +1,26 @@
+
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
 
 WORKDIR /app
 
-# GDAL/PROJ runtime libraries used by GeoPandas/Fiona/Pyogrio.
+# Install system dependencies for geospatial processing.
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends gdal-bin libgdal-dev libproj-dev \
+    && apt-get install -y --no-install-recommends \
+        gdal-bin \
+        libgdal-dev \
+        libproj-dev \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Python dependencies separately to improve build caching.
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+# Copy application source and required project files.
+COPY app/ ./app/
 
 EXPOSE 8000
 
