@@ -15,11 +15,11 @@ RUN apt-get update \
         libproj-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies separately to improve build caching.
+# Install Python dependencies.
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application source and required project files.
+# Copy application source and project files.
 COPY app/ ./app/
 
 EXPOSE 8000
